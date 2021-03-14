@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "天天基金-比对工具插件",
+  "description": "可以存储多套自定义比对基金",
+  "version": "1.0",
+
+  "content_scripts": [
+    {
+      "matches": ["http://fund.eastmoney.com/Compare/"],
+      "js": ["js/content.js"]
+    }
+  ],
+
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+
+  "permissions": [
+    "storage",
+    "tabs", 
+    "activeTab",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  
+  "content_security_policy": "style-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com/;script-src 'self' 'unsafe-eval' https://unpkg.com/; object-src 'self' ;"
+}

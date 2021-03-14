@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    body {
+      width: 500px;
+      height: 300px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>天天基金自选对比插件</h1>
+    <el-button @click="openCompare">打开对比页面</el-button>
+    <div class="page-fund__container">
+      <el-table
+        :data="funds"
+      >
+        <el-table-column prop="name" label="名称"></el-table-column>
+        <el-table-column label="基金数">
+          <template slot-scope="scope">
+            {{scope.row.codes.length}}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button type="primary" circle icon="el-icon-view" @click="selectFunds(scope.row)"></el-button>
+            <el-button type="danger" circle icon="el-icon-delete" @click="deleteFunds(scope.row)"></el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+  </div>
+</body>
+<script src="js/vue@2.6.12.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/app.js"></script>
+</html>
